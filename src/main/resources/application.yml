@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+eureka:
+  instance:
+    hostname: localhost
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: Identity-Service
+          uri: http://localhost:9191/
+          predicates:
+            - Path=/identity/**
+        - id: Order-Service
+          uri: http://localhost:9192/
+          predicates:
+            - Path=/order/**
+        - id: InventoryAndCatalog-Service
+          uri: http://localhost:9193/
+          predicates:
+            - Path=/inventoryandcatalog/**
