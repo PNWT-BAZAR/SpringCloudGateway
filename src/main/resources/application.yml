@@ -15,11 +15,17 @@ spring:
           uri: http://localhost:9191/
           predicates:
             - Path=/identity/**
+          filters:
+            - RewritePath=/identity/(?<segment>.*), /$\{segment}
         - id: Order-Service
           uri: http://localhost:9192/
           predicates:
             - Path=/order/**
-        - id: InventoryAndCatalog-Service
+          filters:
+            - RewritePath=/order/(?<segment>.*), /$\{segment}
+        - id: Order-Service
           uri: http://localhost:9193/
           predicates:
-            - Path=/inventoryandcatalog/**
+            - Path=/inventory/**
+          filters:
+            - RewritePath=/inventory/(?<segment>.*), /$\{segment}
