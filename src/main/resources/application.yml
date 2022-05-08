@@ -23,7 +23,7 @@ spring:
             - Path=/order/**
           filters:
             - RewritePath=/order/(?<segment>.*), /$\{segment}
-        - id: Order-Service
+        - id: InventoryManagementCatalog-Service
           uri: http://localhost:9193/
           predicates:
             - Path=/inventory/**
