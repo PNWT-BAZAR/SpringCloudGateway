@@ -6,6 +6,9 @@ eureka:
     hostname: localhost
 
 spring:
+  main:
+    web-application-type: reactive
+    allow-bean-definition-overriding: true
   application:
     name: api-gateway
   cloud:
