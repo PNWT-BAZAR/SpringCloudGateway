@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@Component
 public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
     @Override
     public void commence(HttpServletRequest httpServletRequest, HttpServletResponse response, AuthenticationException e) throws IOException, ServletException {
+        System.out.println("OVDJESAM");
         response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "UNAUTHORIZED");
 
         // How to customize the retured message?

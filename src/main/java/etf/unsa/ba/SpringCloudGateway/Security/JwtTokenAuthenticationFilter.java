@@ -6,6 +6,7 @@ import io.jsonwebtoken.Jwts;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
@@ -24,10 +25,19 @@ public class JwtTokenAuthenticationFilter extends OncePerRequestFilter {
         this.jwtConfig = jwtConfig;
     }
 
+//    @Override
+//    public void init() {
+//        System.out.println("PLSPLS");
+//    }
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
 
+        System.out.println(jwtConfig.getUri());
+        System.out.println(jwtConfig.getHeader());
+        System.out.println(jwtConfig.getPrefix());
+        System.out.println(jwtConfig.getSecret());
         // 1. get the authentication header. Tokens are supposed to be passed in the authentication header
         String header = request.getHeader(jwtConfig.getHeader());
 
@@ -77,6 +87,16 @@ public class JwtTokenAuthenticationFilter extends OncePerRequestFilter {
 
         // go to the next filter in the filter chain
         chain.doFilter(request, response);
+    }
+
+    @Override
+    protected boolean shouldNotFilterAsyncDispatch() {
+        return false;
+    }
+
+    @Override
+    protected boolean shouldNotFilterErrorDispatch() {
+        return false;
     }
 
 }
