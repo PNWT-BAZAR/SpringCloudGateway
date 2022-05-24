@@ -38,6 +38,19 @@ zuul:
       service-id: IDENTITYSERVICE
       sensitive-headers: Cookie,Set-Cookie
 
+    order-service:
+      path: /order/**
+      url: http://localhost:9192
+      service-id: ORDERSERVICE
+      sensitive-headers: Cookie,Set-Cookie
+
+    inventory-service:
+      path: /inventory/**
+      url: http://localhost:9193
+      service-id: INVENTORYANDCATALOGSERVICE
+      sensitive-headers: Cookie,Set-Cookie
+
+
 
 
 security:
