@@ -51,10 +51,10 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.DELETE, "/inventory/**").hasRole("ADMIN")
 
                 //Order Service
-                .antMatchers(HttpMethod.GET, "/order/orders/**").hasRole("USER")
-                .antMatchers(HttpMethod.PUT, "/order/orders").hasRole("USER")
-                .antMatchers(HttpMethod.POST, "/order/orders").hasRole("USER")
-                .antMatchers(HttpMethod.DELETE, "/order/orders/**").hasRole("USER")
+                .antMatchers(HttpMethod.GET, "/order/orders/**").permitAll()
+                .antMatchers(HttpMethod.PUT, "/order/orders").permitAll()
+                .antMatchers(HttpMethod.POST, "/order/orders").permitAll()
+                .antMatchers(HttpMethod.DELETE, "/order/orders/**").permitAll()
 
                 .antMatchers(HttpMethod.GET, "/order/orderItems/**").hasRole("ADMIN")
 
