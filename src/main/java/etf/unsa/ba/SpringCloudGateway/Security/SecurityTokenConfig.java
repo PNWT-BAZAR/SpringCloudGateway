@@ -46,7 +46,7 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
                 //Inventory Service
                 .antMatchers(HttpMethod.GET, "/inventory/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/inventory/**").hasRole("ADMIN")
-                .antMatchers(HttpMethod.PUT, "/inventory/reviewProduct/**").hasRole("USER")
+                .antMatchers(HttpMethod.PUT, "/inventory/products/reviewProduct/**").permitAll()
                 .antMatchers(HttpMethod.PUT, "/inventory/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE, "/inventory/**").hasRole("ADMIN")
 
